@@ -1,0 +1,110 @@
+#Basic commands
+git clone <url>
+git pull
+git status
+git log
+git add <file_name>
+git add . or git add --all
+git commit -m "message"
+git push origin master
+git diff master dev				//Diff b/w master and dev
+git rm <file_name>             	//Remove a file
+
+git init 						    //Making a local folder on system to a git folder
+git config user.name "devcrafts89"   (git config --global user.name "devcrafts89"  //--global flag means all repos)
+git config user.email "d@c.com"
+git config --unset-all user.name 	//reset user.name to default setting
+git remote add origin <url>     	//origin is an alias name for url
+git remote -v
+rm -rf .git							//Remove .git folder which remove git reference
+
+
+#Branches (First point to a Repo)
+git branch -l						//list number of branch
+git branch dev						//create a dev branch
+git checkout dev		    		//switch to dev branch
+git checkout -b prod        		//create and switch to prod branch
+git checkout -b test dev 			//create a test branch from dev branch instead of default master branch and then switch to prod branch
+git branch -m prod preprod      	//rename a branch from prod to preprod
+
+If in case branch "prod" exists on remote, push "preprod" to remote and remove "prod" from remote
+git push -u origin preprod          (git push -u origin <branch_name>)   //Push local branch to remote
+git push origin --delete prod
+
+git checkout dev
+git checkout master <file_name> 	//checking out a file from master into dev
+
+
+#Stash
+git stash
+git stash list
+git stash apply stash@{n} 			//Apply specific stash where "n" is the number from the git stash list
+git stash apply 					//Apply recently added stash
+git stash pop stash@{n}				
+git stash pop						//Apply and pops up recently added stash
+git stash drop stash@{n}
+git stash drop						//Drop recently added stash
+git stash clear						//Clear all stash
+
+#Merge
+git checkout dev 
+git merge master                               //To merge master latest change on dev branch
+git pull -s recursive -X theirs origin master  //Get master files in all conflicted files
+git merge --abort                              //Abort the merge
+
+#Rebase
+git checkout dev 
+git rebase master
+
+If you merge branch1(say) to master, all branch1 commits are ignored and a new commit is created on master
+If you rebase branch1(say) to master, all branch1 commits are preseved and re written on master branch and no new commit is created
+
+#Clean
+git clean -fd
+git branch -l								   //List all branch
+git branch -D master                           //Delete local branches
+
+#Useful linux cmd
+cp Source/Code/file_1 ~/Desktop/Code_Backup/       //Copy file
+Press Esc and then type :wq to save and exit.
+
+
+#Scenarios
+1. Remove a commit from local?
+git reset --hard <commit_id>
+
+2. Remove a file from staging area?
+git reset HEAD --<file_name>
+git restore --staged <file_name>
+
+3. Checkout a file from a commit id?
+git checkout <commit_id> --<file_name>
+
+5. How can I remove a commit on GitHub?
+git checkout <branch_name>
+git rebase -i HEAD~2                       //To rebase to the 2nd last commit
+Delete the last commit from the file and then "esc" and ":wq"
+git push origin <branch_name> --force
+
+4. Remove files which are already on GitHub repo but should be ignored as per .gitignore added in the later commit?
+git rm -r --cached .
+git add .
+git commit -m "For .gitignore"
+git push -u origin <branch_name> //Make sure that origin is poiting to correct repo
+
+#Golden Rules
+1. Golden rule is you should merge to master branch and rebase the feature branches. Avoid rebase in case of public repo
+
+#Default branch
+Master is default branch for any repo but it can be changed to other branches like prod or live on github
+
+#Gitignore
+1. During repo creation on GitHuB, we can choose gitignore option and for what language
+2. If you didn't chose during repo creation, you can add a gitignore local file and get language specific info from gitignore.io
+3. For Dotnet, it can be added manually into the project git folder "dotnet new gitignore"
+
+
+
+
+
+
