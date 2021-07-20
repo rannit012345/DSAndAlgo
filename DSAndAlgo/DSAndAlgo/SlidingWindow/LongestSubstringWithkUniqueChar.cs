@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSAndAlgo.SlidingWindow
 {
@@ -13,9 +10,8 @@ namespace DSAndAlgo.SlidingWindow
     class LongestSubstringWithkUniqueChar
     {
         /// <summary>
-        /// I/p - str = "abcbdbdbbdcdabd" k=2,3
-        /// O/P1 - bdbdbbd
-        /// O/P2 - bcbdbdbbdcd
+        /// I/p - str = "abcbdbdbbdcdabd" k=2,3 | O/P1 - bdbdbbd, O/P2 - bcbdbdbbdcd
+        /// I/P - str = "aabacbeghbe" k=3 | O/P - aabacb
         /// </summary>
         /// <param name="str"></param>
         /// <param name="k"></param>
@@ -65,8 +61,8 @@ namespace DSAndAlgo.SlidingWindow
                         myDict[str[i]]--;
                         if(myDict[str[i]] == 0) { myDict.Remove(str[i]); }
                         i++;
-                        j++;
                     }
+                    j++;
                 }
             }
             Console.WriteLine(printValue);

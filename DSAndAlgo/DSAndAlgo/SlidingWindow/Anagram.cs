@@ -47,11 +47,11 @@ namespace DSAndAlgo.SlidingWindow
                    
                     if (loopCounter == 0) { anagramCount++;  }
 
+                    // calculation before sliding the window. For loopcounter, we decrease it when element count is 0 and increase the loopcounter when element count is 1
                     if (patternDict.ContainsKey(str[i]))
                     {
-                        if(patternDict[str[i]] == 0) loopCounter++;
                         patternDict[str[i]]++;
-                        
+                        if (patternDict[str[i]] == 1) loopCounter++;
                     }
 
                     i++;
