@@ -1,13 +1,15 @@
-﻿namespace DSAndAlgo.Stacks
+﻿using System.Collections.Generic;
+
+namespace DSAndAlgo.Recursion
 {
     class ReverseAStackUsingRecursion
     {
         //I/P - 5,4,3,2,1 | O/P - 1,2,3,4,5
-        public void Reverse(StackByLinkedList s)
+        public void Reverse(Stack<int> s)
         {
             if (s.Count == 1) return;
 
-            int temp = (int)s.Pop();
+            int temp = s.Pop();
 
             Reverse(s);
 
@@ -16,7 +18,7 @@
             return;
         }
 
-        public void Insert(StackByLinkedList s, int temp)
+        public void Insert(Stack<int> s, int temp)
         {
             if(s.Count == 0)
             {
@@ -24,7 +26,7 @@
                 return;
             }
 
-            int val = (int)s.Pop();
+            int val = s.Pop();
 
             Insert(s, temp);
 
@@ -38,7 +40,7 @@
     
    //I/P - Put below code in main for testing
 
-            StackByLinkedList stack = new StackByLinkedList();
+            Stack<int> stack = new Stack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);

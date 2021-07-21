@@ -3,6 +3,7 @@ using DSAndAlgo.LinkedLists;
 
 namespace DSAndAlgo.Stacks
 {
+    //Better to use generic type stack
     class StackByLinkedList
     {
         private SingleLinkedList list;

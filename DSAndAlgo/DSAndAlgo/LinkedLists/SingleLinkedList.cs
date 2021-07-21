@@ -2,6 +2,7 @@
 
 namespace DSAndAlgo.LinkedLists
 {
+    //Better to create generic single linked list
     class SingleLinkedList
     {
         public SingleNode head;
