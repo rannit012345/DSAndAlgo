@@ -38,7 +38,6 @@
    //I/P - Put below code in main for testing
    
             StackByLinkedList stack = new StackByLinkedList();
-            Console.WriteLine("**Sorted Stack");
             stack.Push(1);
             stack.Push(5);
             stack.Push(0);
@@ -49,7 +48,7 @@
 
             Console.WriteLine();
 
-            Console.WriteLine("**UnSorted Stack");
+            Console.WriteLine("**Sorted Stack");
             while (stack.Count != 0)
             {
                 Console.WriteLine(stack.Pop());  

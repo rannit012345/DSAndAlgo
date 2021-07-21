@@ -21,7 +21,6 @@ namespace DSAndAlgo.Stacks
         public void Push(object data)
         {
             list.AddAt(0, data);
-            Console.WriteLine("Inserted " + data?.ToString() + " in stack");
         }
 
         /// <summary>
@@ -88,6 +87,7 @@ namespace DSAndAlgo.Stacks
             for (int i = 1; i <= 10; i++)
             {
                 stack.Push(i * 10);
+                Console.WriteLine("Inserted " + i.ToString() + " in stack");
             }
 
             Console.WriteLine();
