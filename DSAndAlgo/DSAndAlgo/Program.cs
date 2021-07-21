@@ -1,5 +1,4 @@
-﻿using DSAndAlgo.SlidingWindow;
-using System;
+﻿using System;
 
 namespace DSAndAlgo
 {
@@ -8,7 +7,6 @@ namespace DSAndAlgo
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-           
 
         }
     }

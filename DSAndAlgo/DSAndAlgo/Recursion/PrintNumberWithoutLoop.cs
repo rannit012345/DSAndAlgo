@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DSAndAlgo.GeneralProblems
+namespace DSAndAlgo.Recursion
 {
     class PrintNumberWithoutLoop
     {
@@ -8,7 +8,7 @@ namespace DSAndAlgo.GeneralProblems
         {
             if (n == 1)
             {
-               Console.WriteLine(n);
+                Console.WriteLine(n);
                 return;
             }
             PrintSum1toN(n - 1);
