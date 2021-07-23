@@ -5,6 +5,11 @@ namespace DSAndAlgo.Recursion
 {
     class GenerateAllBalancedParenthesis
     {
+        /// <summary>
+        /// Pick or Don’t Pick Way (A.K.A - I/O method and recursive tree)
+        /// I/P = 3
+        /// </summary>
+        /// <param name="numberOfParenthesis"></param>
         public void BalanceParenthesis(int numberOfParenthesis)
         {
             var set = new HashSet<string>();
