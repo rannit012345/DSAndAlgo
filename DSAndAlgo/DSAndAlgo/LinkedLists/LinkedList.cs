@@ -2,13 +2,12 @@
 
 namespace DSAndAlgo.LinkedLists
 {
-    //Better to create generic single linked list
-    class SingleLinkedList
+    class LinkedList<T>
     {
-        public SingleNode head;
+        public Node<T> head;
         public int size { private set; get; }
 
-        public SingleLinkedList()
+        public LinkedList()
         {
             head = null;
         }
@@ -16,9 +15,10 @@ namespace DSAndAlgo.LinkedLists
         /// <summary>
         /// Add node at the end
         /// </summary>
-        public void Add(object data)
+        /// <param name="data"></param>
+        public void Add(T data)
         {
-            SingleNode node = new SingleNode(data);
+            Node<T> node = new Node<T>(data);
 
             if (head == null)
             {
@@ -26,8 +26,8 @@ namespace DSAndAlgo.LinkedLists
                 size++;
                 return;
             }
-           
-            SingleNode currentNode = head;
+
+            Node<T> currentNode = head;
             while (currentNode.next != null)
             {
                 currentNode = currentNode.next;
@@ -39,42 +39,44 @@ namespace DSAndAlgo.LinkedLists
         /// <summary>
         /// Add node at any position
         /// </summary>
-        /// <param name="node"></param>
-        /// <param name="position">enter 0 to add to head</param>
-        public void AddAt(int pos, object data)
+        /// <param name="pos">Enter 1 to add to head</param>
+        /// <param name="data"></param>
+        public void AddAt(int pos, T data)
         {
-            SingleNode node = new SingleNode(data);
+            Node<T> node = new Node<T>(data);
+            int index = pos - 1;
 
             if (head == null)
             {
                 head = node;
+                size++;
             }
-            else if(pos == 0)
+            else if (index == 0)
             {
                 node.next = head;
                 head = node;
+                size++;
+            }
+            else if (index >= size)
+            {
+                Add(data);
             }
             else
             {
-                if (pos >= size)
-                {
-                    pos = size - 1;  //If there is one element in linked list, the head is at position 0 but size of the linked list is 1
-                }
-
-                SingleNode currentNode = head;
+                Node<T> currentNode = head;
                 int counter = 0;
 
-                while(counter < pos)
+                while (counter < index - 1)
                 {
                     currentNode = currentNode.next;
                     counter++;
                 }
 
-                SingleNode temp = currentNode.next;
+                Node<T> temp = currentNode.next;
                 currentNode.next = node;
                 currentNode.next.next = temp;
+                size++;
             }
-            size++;
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace DSAndAlgo.LinkedLists
                 return;
             }
 
-            SingleNode currentNode = head;
+            Node<T> currentNode = head;
 
             while (currentNode.next.next != null)
             {
@@ -97,39 +99,40 @@ namespace DSAndAlgo.LinkedLists
             size--;
         }
 
-
         /// <summary>
         /// Remove node at specific position
         /// </summary>
-        /// <param name="pos">enter 0 to remove the head</param>
+        /// <param name="index">Enter 1 to remove from head</param>
         public void RemoveAt(int pos)
         {
+            int index = pos - 1;
+
             if (head == null)
             {
                 return;
             }
-            else if (pos == 0)
+            else if (index == 0)
             {
                 head = head.next;
+                size--;
+            }
+            else if (index >= size)
+            {
+                Remove();
             }
             else
             {
-                if (pos >= size)
-                {
-                    pos = size - 1;  //If there is one element in linked list, the head is at position 0 but size of the linked list is 1
-                }
-
-                SingleNode currentNode = head;
+                Node<T> currentNode = head;
                 int counter = 0;
 
-                while (counter < pos - 1)
+                while (counter < index - 1)
                 {
                     currentNode = currentNode.next;
                     counter++;
                 }
                 currentNode.next = currentNode.next.next;
+                size--;
             }
-            size--;
         }
 
         /// <summary>
@@ -144,7 +147,7 @@ namespace DSAndAlgo.LinkedLists
                 return false;
             }
 
-            SingleNode currentNode = head;
+            Node<T> currentNode = head;
 
             while (currentNode != null)
             {
@@ -167,7 +170,7 @@ namespace DSAndAlgo.LinkedLists
                 return;
             }
 
-            SingleNode currentNode = head;
+            Node<T> currentNode = head;
 
             while (currentNode != null)
             {
@@ -177,35 +180,35 @@ namespace DSAndAlgo.LinkedLists
         }
     }
 
+    /*  Put below code in main for testing
+     
+        LinkedList<int> list = new LinkedList<int>();
 
-    /**
-    
-     //I/P - Put below code in main for testing
+        //Add
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        list.Add(4);
+        list.AddAt(3, 5);
+        list.AddAt(8, 6);
+        list.AddAt(1, 7);
 
-            SingleLinkedList list = new SingleLinkedList();
+        //Search
+        list.SearchNode(4);
 
-            //Add
-            list.Add(0);
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.AddAt(2, 4);
-            list.AddAt(7, 5);
-            list.AddAt(0, 6);
+        //Remove
+        list.Remove();
+        list.RemoveAt(4);
+        list.RemoveAt(10);
+        list.RemoveAt(1);
 
-            //Search
-            list.SearchNode(4);
+        //Print list
+        list.PrintList();
 
-            //Remove
-            list.Remove();
-            list.RemoveAt(4);
-            list.RemoveAt(10);
-            list.RemoveAt(0);
-
-            //Print list
-            list.PrintList();
-
-            //Size
-            Console.WriteLine("Size: {0}", list.size.ToString());
+        //Size
+        Console.WriteLine("Size: {0}", list.size.ToString());
+     
      */
 }
+
+
