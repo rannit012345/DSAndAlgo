@@ -3,42 +3,41 @@ using DSAndAlgo.LinkedLists;
 
 namespace DSAndAlgo.Stacks
 {
-    //Better to use generic type stack
-    class StackByLinkedList
+    class StackByLinkedList<T>
     {
-        private SingleLinkedList list;
+        private LinkedList<T> list;
         public int Count => list.size;
-        public object top => Peek();
+        public T top => Peek();
 
         public StackByLinkedList()
         {
-            list = new SingleLinkedList();
+            list = new LinkedList<T>();
         }
 
         /// <summary>
         /// Pushing data to top of stack - Node added to head
         /// </summary>
         /// <param name="data"></param>
-        public void Push(object data)
+        public void Push(T data)
         {
-            list.AddAt(0, data);
+            list.AddAt(1, data);
         }
 
         /// <summary>
-        /// Return and remove data from top of stack - head removed
+        /// Return and remove data from top of stack - Head removed
         /// </summary>
         /// <returns></returns>
-        public object Pop()
+        public T Pop()
         {
             if (IsEmpty())
             {
-                Console.WriteLine("Stack is empty");
-                return null;
+                Console.WriteLine("Stack is empty, nothing to pop");
+                return default(T);
             }
             else
             {
-                object top = list.head.data;
-                list.RemoveAt(0);
+                T top = list.head.data;
+                list.RemoveAt(1);
                 return top;
             }
         }
@@ -47,12 +46,12 @@ namespace DSAndAlgo.Stacks
         /// Return data from top of stack
         /// </summary>
         /// <returns></returns>
-        public object Peek()
+        public T Peek()
         {
             if (IsEmpty())
             {
                 Console.WriteLine("Stack is empty, nothing to peek");
-                return null;
+                return default(T);
             }
             else
             {
@@ -78,30 +77,31 @@ namespace DSAndAlgo.Stacks
         }
     }
 
-    /**
+    /*  Put below code in main for testing
      
-    //I/P - Put below code in main for testing
-    
-            StackByLinkedList stack = new StackByLinkedList();
+        StackByLinkedList<int> stack = new StackByLinkedList<int>();
 
-            Console.WriteLine("** Pushing 10 values into stack **");
-            for (int i = 1; i <= 10; i++)
-            {
-                stack.Push(i * 10);
-                Console.WriteLine("Inserted " + i.ToString() + " in stack");
-            }
+        Console.WriteLine("** Pushing 10 values into stack **");
+        for (int i = 1; i <= 10; i++)
+        {
+            stack.Push(i * 10);
+            Console.WriteLine("Pushed " + (i * 10).ToString() + " in stack");
+        }
 
-            Console.WriteLine();
-            Console.WriteLine("** Peeking value **");
-            Console.WriteLine(stack.Peek());
-            Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine("** Peeking value **");
+        Console.WriteLine(stack.Peek());
+        Console.WriteLine();
 
-            Console.WriteLine("**Poping 11 values from stack**");
-            for (int i = 1; i <= 11; i++)
-            {
-               Console.WriteLine("Removed " + stack.Pop() + " from stack");
-            }
-            Console.WriteLine();
+        Console.WriteLine("**Poping 11 values from stack**");
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.WriteLine("Popped " + stack.Pop() + " from stack");
+        }
+        Console.WriteLine("Popped " + stack.Pop() + " from stack");
+        Console.WriteLine("Peeked " + stack.Peek() + " from stack");
+
+        Console.WriteLine();
      
      */
 }
