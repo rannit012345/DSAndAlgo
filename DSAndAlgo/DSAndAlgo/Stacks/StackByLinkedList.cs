@@ -7,7 +7,6 @@ namespace DSAndAlgo.Stacks
     {
         private LinkedList<T> list;
         public int Count => list.size;
-        public T top => Peek();
 
         public StackByLinkedList()
         {
