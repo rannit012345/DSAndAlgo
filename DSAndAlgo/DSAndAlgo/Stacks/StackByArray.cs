@@ -16,9 +16,13 @@ namespace DSAndAlgo.Stacks
             arr = new T[stackSize];
         }
 
+        /// <summary>
+        /// Pushing data to top of stack - Top incremented and Element added on the top
+        /// </summary>
+        /// <param name="data"></param>
         public void Push(T data)
         {
-            if (top >= arrSize)
+            if (IsFull())
             {
                 Console.WriteLine("Stack Overflow");
                 return;
@@ -30,9 +34,13 @@ namespace DSAndAlgo.Stacks
             }
         }
 
+        /// <summary>
+        /// Popping data from top of stack - Element on top is returned (Not deleted) and top is decremented
+        /// </summary>
+        /// <returns></returns>
         public T Pop()
         {
-            if (top < 0)
+            if (IsEmpty())
             {
                 Console.WriteLine("Stack Underflow");
                 return default(T);
@@ -45,9 +53,13 @@ namespace DSAndAlgo.Stacks
             }
         }
 
+        /// <summary>
+        /// Element on top is returned
+        /// </summary>
+        /// <returns></returns>
         public T Peek()
         {
-            if (top < 0)
+            if (IsEmpty())
             {
                 Console.WriteLine("Stack Underflow");
                 return default(T);
@@ -60,17 +72,33 @@ namespace DSAndAlgo.Stacks
 
         }
 
+        /// <summary>
+        /// Delete the stack
+        /// </summary>
         public void DeleteStack()
         {
             arr = null;
         }
 
+        /// <summary>
+        ///  Check if stack is empty
+        /// </summary>
+        /// <returns></returns>
         public bool IsEmpty()
         {
             return top < 0;
         }
 
+        /// <summary>
+        /// Check if stack is full
+        /// </summary>
+        /// <returns></returns>
+        public bool IsFull()
+        {
+            return top == arrSize - 1;
+        }
+
     }
 
-    //Put the same i/p used in StackByLinkedList
+    //Put the same i/p in main which is used in StackByLinkedList
 }

@@ -3,6 +3,10 @@ using DSAndAlgo.LinkedLists;
 
 namespace DSAndAlgo.Stacks
 {
+    /// <summary>
+    /// Stack implementation using our linked list implementaion
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class StackByLinkedList<T>
     {
         private LinkedList<T> list;
@@ -23,7 +27,7 @@ namespace DSAndAlgo.Stacks
         }
 
         /// <summary>
-        /// Return and remove data from top of stack - Head removed
+        /// Return and remove data from top of stack - Head returned and removed
         /// </summary>
         /// <returns></returns>
         public T Pop()
@@ -42,7 +46,7 @@ namespace DSAndAlgo.Stacks
         }
 
         /// <summary>
-        /// Return data from top of stack
+        /// Return data from top of stack - Head returned
         /// </summary>
         /// <returns></returns>
         public T Peek()
