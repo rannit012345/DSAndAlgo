@@ -21,7 +21,22 @@ namespace DSAndAlgo.Queues
         private int front;
         private int rear;
 
-        public int Count => arr.Length;
+        public int Size => arr.Length;
+
+        public int Count
+        {
+            get
+            {
+                if (rear >= front)
+                {
+                    return rear - front + 1;
+                }
+                else
+                {
+                    return (Size - front) + rear + 1; 
+                }
+            } 
+        }
 
         public CircularQueue(int queueSize)
         {
