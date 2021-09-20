@@ -9,7 +9,15 @@ namespace DSAndAlgo.Queues
         private int front;
         private int rear;
 
-        public int Count => arr.Length;
+        public int Size => arr.Length;
+        public int Count
+        {
+            get
+            {
+                return rear - front + 1;
+            }
+        }
+        
 
         public QueueByArray(int queueSize)
         {
@@ -119,12 +127,16 @@ namespace DSAndAlgo.Queues
         queue.Enqueue(3);
         queue.Enqueue(4);
         queue.Enqueue(5);
+        Console.WriteLine("Elements Count = {0}", queue.Count);
         Console.WriteLine("Dequeued {0}", queue.Dequeue());
         Console.WriteLine("Dequeued {0}", queue.Dequeue());
+        Console.WriteLine("Elements Count = {0}", queue.Count);
         Console.WriteLine("Enqueing 6, 7, 8");
         queue.Enqueue(6);
         queue.Enqueue(7);
+        Console.WriteLine("Elements Count = {0}", queue.Count);
         queue.Enqueue(8);
+        Console.WriteLine("Elements Count = {0}", queue.Count);
         Console.WriteLine("Front {0}", queue.Front());
 
         Console.WriteLine();
