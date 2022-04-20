@@ -32,7 +32,7 @@ namespace DSAndAlgo.SearchingAndSorting.BinarySearch
         /// <param name="arr"></param>
         /// <param name="ele"></param>
         /// <returns></returns>
-        public int SearchSortedArrayInReverseOrder(int[] arr, int ele)
+        public int SearchInReverseSortedArray(int[] arr, int ele)
         {
             int start = 0;
             int end = arr.Length - 1;
@@ -62,7 +62,7 @@ namespace DSAndAlgo.SearchingAndSorting.BinarySearch
 
             if (size == 0) return -1;
             else if (arr[0] < arr[1]) { return Search(arr, ele); }
-            else if (arr[0] > arr[1]) { return SearchSortedArrayInReverseOrder(arr, ele); }
+            else if (arr[0] > arr[1]) { return SearchInReverseSortedArray(arr, ele); }
 
             return -1;
         }
