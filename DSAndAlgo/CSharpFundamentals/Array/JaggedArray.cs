@@ -7,6 +7,8 @@ namespace CSharpFundamentals.Array
 
         #region Example 1
 
+        //Creation and fill data
+
         /// <summary>
         /// Create an empty jagged array
         /// </summary>
@@ -62,6 +64,9 @@ namespace CSharpFundamentals.Array
             return jagged;
         }
 
+        
+        //Print Data
+
         /// <summary>
         /// Print all values in jagged array
         /// </summary>
@@ -112,7 +117,10 @@ namespace CSharpFundamentals.Array
         #endregion
 
 
+
         #region Example 2 - Interesting
+
+        //Creation and fill data
 
         /// <summary>
         /// Create arrays of multidimensional array and assign values
@@ -144,6 +152,9 @@ namespace CSharpFundamentals.Array
 
             return jagged;
         }
+
+
+        //Print Data
 
         /// <summary>
         /// Print all values in mixed jagged array
