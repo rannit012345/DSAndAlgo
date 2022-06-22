@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSAndAlgo.SlidingWindow
 {
+    /// <summary>
+    /// LeetCode - 76. Minimum Window Substring
+    /// </summary>
     class MinimumWindowSubstring
     {
         Dictionary<char, int> myDict = new Dictionary<char, int>();
 
         /// <summary>
+        /// AV
         /// I/P 1:"timetopractice" "toc"            O/P 1: 6 opract
         /// I/P 2:"ADOBECODEBANC" "ABC"             O/P 2: 4 BANC
         /// I/P 3: "this is a test string", "tist"  O/P 3: 6 t stri
@@ -18,11 +19,11 @@ namespace DSAndAlgo.SlidingWindow
         /// </summary>
         /// <param name="strGiven"></param>
         /// <param name="strToFind"></param>
-        public void Find(string strGiven, string strToFind)
+        public string Find(string strGiven, string strToFind)
         {
-            myDict.Clear();
             CreateMap(strToFind);
-            int i = 0, j = 0, minLength=0;
+
+            int i = 0, j = 0, minWindowLength = strGiven.Length + 1;
             string result = "";
             var count = myDict.Count;
             while(j< strGiven.Length)
@@ -31,41 +32,34 @@ namespace DSAndAlgo.SlidingWindow
                 {
                     myDict[strGiven[j]]--;
                     if (myDict[strGiven[j]] == 0)
-                    {
-                        count = count - 1;
-                    }
+                        count--;
                 }
 
-                if(count == 0)
-                {     
-                    //keep reducing the length unless the count is 0
-                    while (count == 0)
-                    {
-                        if (minLength == 0 || minLength > j - i + 1)
-                            minLength = j - i + 1;
-                           result = strGiven.Substring(i, j - i + 1);
-                        if (myDict.ContainsKey(strGiven[i]))
-                        {
-                            myDict[strGiven[i]]++;
-                            if(myDict[strGiven[i]] == 1)
-                            {
-                                count = count + 1;
-                            }
-                        }
-
-                        i++;
-
-                    }
                     
+            //keep reducing the length unless the count is 0
+            while (count == 0)
+            {
+                if(minWindowLength > j - i + 1)
+                {
+                   minWindowLength = j - i + 1;
+                   result = strGiven.Substring(i, j - i + 1);
                 }
-                j++;
-                
-                
+
+                if (myDict.ContainsKey(strGiven[i]))
+                {
+                    myDict[strGiven[i]]++;
+
+                    if (myDict[strGiven[i]] == 1)
+                        count++;
+                }
+
+                i++;
             }
-            Console.WriteLine(minLength);
+
+            j++;
+            }
             Console.WriteLine(result);
-
-
+            return result;
         }
 
         private void CreateMap(string strToFind) 
@@ -82,6 +76,5 @@ namespace DSAndAlgo.SlidingWindow
                 }
             }
         }
-
     }
 }

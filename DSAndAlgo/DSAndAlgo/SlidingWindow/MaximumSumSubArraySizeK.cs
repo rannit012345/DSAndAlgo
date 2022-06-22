@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSAndAlgo.SlidingWindow
 {
     class MaximumSumSubArraySizeK
     {
         /// <summary>
-        /// I/P1= {100, 200, 300, 400} k=2 O/P1= 700 
-        /// I/P2= {1, 4, 2, 10, 23, 3, 1, 0, 20} k= 4 O/P2= 39 
+        /// AV
+        /// i/p - arr = [100, 200, 300, 400],  k = 2 | o/p - 700 
         /// </summary>
         /// <param name="arr"></param>
         /// <param name="k"></param>
@@ -41,6 +37,36 @@ namespace DSAndAlgo.SlidingWindow
             }
 
             return maxValue;
+        }
+
+
+        /// <summary>
+        /// Edu (Almost same as above)
+        /// i/p - nums = [2, 1, 5, 1, 3, 2],  target = 3 | o/p - 9
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public int FindMaxSubArray(int[] nums, int target)
+        {
+            int i = 0; int j = 0; int sum = 0;
+            int length = nums.Length;
+            int maxSubArrayLength = int.MaxValue;
+
+            while (j < length)
+            {
+                sum = sum + nums[j];
+
+                while (sum >= target)
+                {
+                    maxSubArrayLength = Math.Min(maxSubArrayLength, j - i + 1);
+                    sum = sum - nums[i];
+                    i++;
+                }
+
+                j++;
+            }
+            return maxSubArrayLength == int.MaxValue ? 0 : maxSubArrayLength;
         }
     }
 }
