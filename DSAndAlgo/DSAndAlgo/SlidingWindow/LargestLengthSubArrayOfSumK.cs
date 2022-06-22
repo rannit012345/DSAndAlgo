@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSAndAlgo.SlidingWindow
 {
@@ -53,7 +50,7 @@ namespace DSAndAlgo.SlidingWindow
         }
 
         /// <summary>
-        /// This method handles both -ve value array and =ve value array
+        /// This method handles both -ve value array and +ve value array
         /// I/p 1 : arr=  { -5, 8, -14, 2, 4, 12 } sum=-5  O/P1= 5
         /// I/p 2 : arr=  { 15, -2, 2, -8, 1, 7, 10, 23 } sum= 0  O/P2= 5
         /// </summary>
