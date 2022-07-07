@@ -3,10 +3,15 @@ using System.Collections.Generic;
 
 namespace DSAndAlgo.SlidingWindow
 {
+    /// <summary>
+    /// 438. Find All Anagrams in a String
+    /// </summary>
     class Anagram
     {
+        #region AV
+
         /// <summary>
-        /// 
+        /// AV
         /// </summary>
         /// <param name="str"></param>
         /// Counts the no of anangrams in a given string for a given pattern 
@@ -63,11 +68,6 @@ namespace DSAndAlgo.SlidingWindow
             Console.WriteLine("Count is" + anagramCount);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pattern"></param>
-        /// <param name="patternDict"></param>
         private void LoadDict(string pattern, Dictionary<char, int> patternDict)
         {
             
@@ -84,5 +84,72 @@ namespace DSAndAlgo.SlidingWindow
                 
             }
         }
+
+        #endregion
+
+
+
+        #region Edu
+
+        Dictionary<char, int> myDict = new Dictionary<char, int>();
+
+        /// <summary>
+        /// Edu
+        /// i/p - s="abbcabc", p="abc" | o/p - [2, 3, 4]
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public IList<int> FindAnagrams(string s, string p)
+        {
+            CreateMap(p);
+            IList<int> list = new List<int>();
+
+            int i = 0, j = 0, count = myDict.Count;
+
+            while (j < s.Length)
+            {
+                if (myDict.ContainsKey(s[j]))
+                {
+                    myDict[s[j]]--;
+
+                    if (myDict[s[j]] == 0)
+                        count--;
+                }
+
+                while (j - i + 1 > p.Length)
+                {
+                    if (myDict.ContainsKey(s[i]))
+                    {
+                        myDict[s[i]]++;
+                        if (myDict[s[i]] == 1)
+                            count++;
+                    }
+                    i++;
+                }
+                j++;
+
+                if (count == 0)
+                    list.Add(i);
+            }
+            return list;
+        }
+
+        private void CreateMap(string p)
+        {
+            for (int k = 0; k < p.Length; k++)
+            {
+                if (!myDict.ContainsKey(p[k]))
+                {
+                    myDict[p[k]] = 1;
+                }
+                else
+                {
+                    myDict[p[k]]++;
+                }
+            }
+        }
+
+        #endregion
     }
 }
